@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<templates xml:space="preserve">
+    <t t-name="HomePage">
+        <div class="homepage">
+
+            <div class="launch_header">
+                <div class="row">
+                    <div class="col-xs-12" id="service_name_div">
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-xs-12" id="LB1">
+                    <strong><p id="on_service">ON SERVICE</p></strong>
+                </div>
+            </div>
+
+            <div class="cust_launch">
+            </div>
+
+            <div class="row">
+                <div class="col-xs-12" id="LB2">
+                     <strong><p id="ready_for_pickup">READY FOR PICKUP</p></strong>
+                </div>
+            </div>
+
+            <div class="cust_launch2">
+            </div>
+            <div class="launch_footer">
+                <p id="service_footer">Thank you! Visit again!</p>
+            </div>
+        </div>
+    </t>
+    <t t-name="ServiceList">
+        <div class="owl-carousel" id="owl-demo">
+        </div>
+    </t>
+    <t t-name="ServiceList2">
+        <div class="owl-carousel" id="owl-demo2">
+        </div>
+    </t>
+    <t t-name="ServiceVehicle">
+        <div class="item">
+            <p id="veh_number"><t t-esc="item.vehicle_details"/></p>
+            <p id="veh_customer"><t t-esc="item.customer_id[1]"/></p>
+            <t t-if="item.state=='2_service'">
+                <p id="veh_state">On Service</p>
+            </t>
+            <!--<p id="veh_name"><t t-esc="item.name"/></p>-->
+        </div>
+    </t>
+    <t t-name="ServiceVehicle2">
+        <div class="item2">
+            <p id="veh_number"><t t-esc="item.vehicle_details"/></p>
+            <p id="veh_customer"><t t-esc="item.customer_id[1]"/></p>
+            <t t-if="item.state=='3_ready'">
+                <p id="veh_state">Ready for pick up</p>
+            </t>
+            <!--<p id="veh_name"><t t-esc="item.name"/></p>-->
+        </div>
+    </t>
+    <t t-name="CompanyList">
+        <div class="company_list">
+        </div>
+    </t>
+    <t t-name="CompanyDetails">
+        <div class="company_details">
+            <p id="company_name"><img t-attf-src="data:image/jpg;base64,{{company.logo}}"/></p>
+            <!--<p id="company_rml_head"><t t-esc="company.rml_header1"/></p>-->
+            <!--<div id="company_address">-->
+                <!--<t t-if="company.phone">-->
+                    <!--Phone : <p id="company_phone"><t t-esc="company.phone"/></p>,-->
+                <!--</t>-->
+                <!--<t t-if="company.fax">-->
+                    <!--Fax : <p id="company_fax"><t t-esc="company.fax"/></p>,-->
+                <!--</t>-->
+                <!--<t t-if="company.email">-->
+                    <!--Email : <p id="company_email"><t t-esc="company.email"/></p>,-->
+                <!--</t>-->
+                <!--<t t-if="company.website">-->
+                    <!--Website : <p id="company_website"><t t-esc="company.website"/></p>-->
+                <!--</t>-->
+            <!--</div>-->
+
+            <p id="service_name">SERVICE STATUS</p>
+        </div>
+    </t>
+</templates>

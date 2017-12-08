@@ -1,0 +1,121 @@
+.homepage {
+    max-width: 100vw;
+    max-height: 100vh;
+    background-color: #ffffff;
+}
+
+.launch_header {
+    padding-bottom: 10px;
+
+}
+
+.launch_footer {
+    padding-bottom: 4px;
+    text-align:center;
+    background-color: white;
+}
+
+.item {
+    border-radius: 23px;
+    background-color: #fdc808;
+    border-style: solid;
+    font-family: monospace;
+    height:160px;
+    max-width:310px;
+    color:black;
+}
+
+.item2 {
+    border-radius: 23px;
+    background-color: #366f19;
+    border-style: solid;
+    font-family: monospace;
+    height:160px;
+    max-width:310px;
+    color:black;
+}
+
+.owl-item {
+    text-align: center;
+}
+
+.owl-stage {
+    padding-left: 35px;
+}
+
+#veh_number {
+    margin-top: 20px;
+    font-size: 30px;
+    font-weight: bold;
+}
+
+#veh_state {
+    margin-top: 20px;
+    margin-bottom: 40px;
+    font-size: 25px;
+    font-weight: bold;
+}
+
+#veh_customer {
+    font-size: 20px;
+}
+
+#service_name_div {
+    text-align: center;
+    font-family: initial;
+}
+
+#service_name {
+    font-size: 35px;
+    margin-top: 5px;
+    font-family: monospace;
+    font-weight: bold;
+}
+
+#on_service {
+    font-size: 30px;
+    font-family: monospace;
+    margin-left: 35px;
+    margin-right: 15px;
+    color:white
+}
+
+#ready_for_pickup {
+    font-size: 30px;
+    font-family: monospace;
+    margin-left: 35px;
+    margin-right: 15px;
+    color:white
+}
+
+#company_address {
+    display:inline-flex;
+    font-size:17px;
+}
+
+#company_name {
+    font-size:28px;
+    margin-top:10px;
+    background-color: #ffffff;
+}
+
+#service_footer {
+    font-size: 30px;
+    margin-top: 5px;
+    font-style: italic;
+    margin-top: 55px;
+    color:red;
+    font-weight:bold;
+}
+
+
+#LB1 {
+    background-color: red;
+    margin-bottom: 10px;
+}
+
+#LB2 {
+    background-color: red;
+    margin-bottom: 10px;
+    margin-top: 20px;
+}

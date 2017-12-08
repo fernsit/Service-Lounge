@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<odoo>
+    <data>
+
+        <record id="group_use_launch" model="res.groups">
+            <field name="name">Service and launch</field>
+        </record>
+
+    </data>
+</odoo>

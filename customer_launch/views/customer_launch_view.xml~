@@ -1,0 +1,234 @@
+<?xml version="1.0"?>
+<odoo>
+
+
+    <!-- ============= Launch menu ============== -->
+
+    <menuitem id="main_launch_menu" name="Customer launch"
+              action="action_home_page" web_icon="customer_launch,static/src/img/customer.png"/>
+
+    <!--<menuitem id="launch_menu" name="Launch"-->
+        <!--parent="main_launch_menu" />-->
+
+    <record id="action_home_page" model="ir.actions.client">
+        <field name="name">Customer launch</field>
+        <field name="tag">customer.launch</field>
+    </record>
+
+    <!--<menuitem id="home_page_launch_menu" name="Service status" parent="launch_menu"-->
+        <!--action="action_home_page"/>-->
+
+    <!--  ======================================== -->
+
+    <!-- Customer launch -->
+    <record id="customer_launch_tree" model="ir.ui.view">
+        <field name="name">customer.launch.tree</field>
+        <field name="model">customer.launch</field>
+        <field name="arch" type="xml">
+            <tree string="Service ">
+                <field name="name"/>
+                <field name="customer_id"/>
+                <field name="email"/>
+                <field name="mobile"/>
+                <field name="service_type_id"/>
+                <field name="salesperson_id"/>
+                <field name="company_id"/>
+                <field name="state"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="customer_launch_form" model="ir.ui.view">
+        <field name="name">customer.launch.form</field>
+        <field name="model">customer.launch</field>
+        <field name="arch" type="xml">
+            <form string="Service" class="o_sale_order">
+                <header>
+                    <button name="action_complete" states="1_queue,2_service,3_ready" type="object" string="Complete"/>
+                    <button name="action_queue" states="2_service,3_ready,4_completed" type="object" string="To queue"/>
+                    <button name="action_service" states="3_ready,4_completed,1_queue" type="object" string="Start service"/>
+                    <button name="action_ready" states="1_queue,2_service,4_completed" type="object" string="Ready for pickup"/>
+                    <field name="state" widget="statusbar" states="1_queue,2_service,3_ready,4_completed"/>
+                </header>
+                <sheet>
+                    <div class="oe_title">
+                        <label for="name" string="Number"/>
+                        <h2><field name="name"/></h2>
+                        <label for="subject" class="oe_edit_only" string="Service"/>
+                        <h3><field name="subject" placeholder="Describe the service..."/></h3>
+                    </div>
+                    <group>
+                        <group string="Customer details">
+                            <field name="customer_id"/>
+                            <field name="odometer_reading"/>
+                            <field name="mobile"/>
+                            <field name="email"/>
+                        </group>
+                        <group string="Service details">
+                            <field name="service_type_id" widget="many2many_tags"/>
+                            <field name="vehicle_details"/>
+                            <field name="salesperson_id"/>
+                            <field name="priority" widget="priority"/>
+                        </group>
+                    </group>
+                    <group col="2">
+                        <field name="software_ref"/>
+                        <field name="company_id"
+                                        groups="base.group_multi_company"
+                                        options="{'no_create': True}"/>
+                        <field name="note"/>
+                    </group>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids" widget="mail_followers"/>
+                    <field name="message_ids" widget="mail_thread"/>
+                </div>
+            </form>
+        </field>
+    </record>
+
+    <record id="customer_launch_kanban" model="ir.ui.view">
+        <field name="name">customer.launch.kanban</field>
+        <field name="model">customer.launch</field>
+        <field name="arch" type="xml">
+            <kanban default_group_by="state">
+                <field name="state"/>
+                <field name="priority"/>
+                <field name="name"/>
+                <field name="subject"/>
+                <field name="customer_id"/>
+                <field name="vehicle_details"/>
+                <field name="color"/>
+                <field name="email"/>
+                <field name="mobile"/>
+                <field name="service_type_id"/>
+                <field name="salesperson_id"/>
+                <templates>
+                    <t t-name="kanban-box">
+                        <div t-attf-class="#{kanban_color(record.color.raw_value)} oe_kanban_global_click">
+                            <div class="o_dropdown_kanban dropdown">
+
+                                <a class="dropdown-toggle btn" data-toggle="dropdown" href="#" >
+                                    <span class="fa fa-bars fa-lg"/>
+                                </a>
+                                <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+                                    <t t-if="widget.editable"><li><a type="edit">Edit</a></li></t>
+                                    <t t-if="widget.deletable"><li><a type="delete">Delete</a></li></t>
+                                    <li><ul class="oe_kanban_colorpicker" data-field="color"/></li>
+                                </ul>
+                            </div>
+                            <div class="oe_kanban_content">
+                                <div>
+                                    <h4><strong><field name="name"/></strong></h4>
+                                </div>
+                                <div>
+                                    <strong><field name="customer_id"/></strong>
+                                </div>
+                                <div>
+                                    <ul>
+                                        <li><i class="fa fa-mobile"></i> <field name="mobile"/></li>
+                                        <h4><li><i class="fa fa-bicycle"></i> <field name="vehicle_details"/></li></h4>
+                                    </ul>
+                                </div>
+
+                                <div class="o_kanban_footer pull-right">
+                                    <field name="priority" widget="priority" groups="base.group_user"/>
+                                </div>
+                            </div>
+                            <div class="oe_clear"></div>
+                        </div>
+                    </t>
+                </templates>
+            </kanban>
+        </field>
+    </record>
+
+    <record model="ir.actions.act_window" id="customer_launch_action">
+        <field name="name">Service</field>
+        <field name="res_model">customer.launch</field>
+        <field name="view_mode">kanban,tree,form</field>
+        <field name="domain">[]</field>
+        <field name="context">{}</field>
+        <field name="help" type="html">
+            <p>
+                Create service entry here......
+            </p>
+        </field>
+    </record>
+
+    <!-- Service type -->
+    <record id="service_type_tree" model="ir.ui.view">
+        <field name="name">service.type.tree</field>
+        <field name="model">service.type</field>
+        <field name="arch" type="xml">
+            <tree string="Service type">
+                <field name="name"/>
+                <field name="description"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="service_type_form" model="ir.ui.view">
+        <field name="name">service.type.form</field>
+        <field name="model">service.type</field>
+        <field name="arch" type="xml">
+            <form string="Service type">
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="name"/>
+                            <field name="description"/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record model="ir.actions.act_window" id="service_type_action">
+        <field name="name">Service type</field>
+        <field name="res_model">service.type</field>
+        <field name="view_mode">tree,form</field>
+        <field name="domain">[]</field>
+        <field name="context">{}</field>
+        <field name="help" type="html">
+            <p>
+                Create service type here......
+            </p>
+        </field>
+    </record>
+
+    <menuitem
+            id="customer_launch_main_menu"
+            name="Service"
+            parent=""
+            web_icon="customer_launch,static/src/img/service.jpeg"
+            sequence="5"/>
+
+        <menuitem
+            id="customer_launch_sub_1"
+            name="Service"
+            parent="customer_launch_main_menu"
+            sequence="5"/>
+
+            <menuitem
+                id="customer_launch_menu"
+                name="Service lead"
+                parent="customer_launch_sub_1"
+                action="customer_launch_action"
+                sequence="5"/>
+
+        <menuitem
+            id="customer_launch_sub_2"
+            name="Configurations"
+            parent="customer_launch_main_menu"
+            sequence="10"/>
+
+            <menuitem
+                id="service_type_menu"
+                name="Service type"
+                parent="customer_launch_sub_2"
+                action="service_type_action"
+                sequence="5"/>
+
+</odoo>

@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<odoo>
+    <data>
+
+        <template id="assets_backend" name="customer_launch assets" inherit_id="web.assets_backend">
+            <xpath expr="." position="inside">
+                <link rel="stylesheet" href="/customer_launch/static/src/css/owl.carousel.min.css"/>
+                <link rel="stylesheet" href="/customer_launch/static/src/css/animate.css"/>
+                <link rel="stylesheet" href="/customer_launch/static/src/css/owl.theme.default.min.css"/>
+                <link rel="stylesheet" href="/customer_launch/static/src/css/customer_launch.css"/>
+                <script type="text/javascript" src="/customer_launch/static/src/js/owl.carousel.min.js"/>
+                <script type="text/javascript" src="/customer_launch/static/src/js/owl.autoplay.js"/>
+                <script type="text/javascript" src="/customer_launch/static/src/js/owl.animate.js"/>
+                <script type="text/javascript" src="/customer_launch/static/src/js/customer_launch.js"/>
+            </xpath>
+        </template>
+
+    </data>
+</odoo>
