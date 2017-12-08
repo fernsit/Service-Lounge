@@ -6,9 +6,9 @@
     'sequence': 5,
     'author': 'Ferns IT Team',
     'summary': 'Customer Lounge Screen For All Types Of Vehicle Service Centers',
-	'price': 55.00,
-	'currency': 'EUR',
-	'images': ['images/main_1.png', 'images/main_2.png', 'images/main_screenshot.png']
+    'price': 55.00,
+    'currency': 'EUR',
+    'images': ['images/main_1.png', 'images/main_2.png', 'images/main_screenshot.png']
     'description': """
 Customer Lounge Screen For All Types Of Vehicle Service Centers
 ==========================================
