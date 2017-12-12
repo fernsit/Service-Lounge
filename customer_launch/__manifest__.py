@@ -31,6 +31,7 @@ Customer Lounge Screen For All Types Of Vehicle Service Centers
     'demo': [
     ],
     'qweb':['static/src/xml/customer_launch.xml'],
+    'images': ['static/description/banner.jpg'],
     'installable': True,
     'application': True,
     'auto_install': False,
